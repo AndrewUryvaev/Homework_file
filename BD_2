@@ -1,0 +1,44 @@
+create table genre (
+    id_genre SERIAL primary key, 
+    name VARCHAR(30) not null
+);   
+ 
+create table executor (
+    id_executor SERIAL primary key,
+    name VARCHAR(30) not null
+);
+
+create table genre_executor (
+    id_genre INTEGER not null references genre(id_genre),
+    id_executor INTEGER not null references executor(id_executor)
+);
+
+create table album (
+    id_album SERIAL primary key,
+    album_release_year date not null,
+    name VARCHAR(30) not null
+);
+
+create table executor_album (
+    id_executor INTEGER not null references executor(id_executor),
+    id_album INTEGER not null references album(id_album)
+);
+
+create table track (
+    id_track SERIAL primary key,
+    name VARCHAR(30) not null,
+    track_duration SERIAL not null,
+    id_album INTEGER not null references album(id_album)
+);
+
+create table compilation (
+    id_compilation SERIAL primary key,
+    name VARCHAR(30) not null,
+    year_of_issue date not null
+);
+
+create table track_compilation (
+    id_track INTEGER not null references track(id_track),
+    id_compilation INTEGER not null references compilation(id_compilation)
+);
+   
