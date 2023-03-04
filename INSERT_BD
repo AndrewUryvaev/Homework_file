@@ -1,0 +1,114 @@
+insert into executor (id_executor, name)
+values ('1', 'Rihanna');
+
+insert into executor (id_executor, name)
+values ('2', 'Linkin Park');
+
+insert into executor (id_executor, name)
+values ('3', 'Rita Ora');
+
+insert into executor (id_executor, name)
+values ('4', 'Eminem');
+
+insert into executor (id_executor, name)
+values ('5', 'Metallica');
+
+insert into executor (id_executor, name)
+values ('6', 'Moby');
+
+insert into executor (id_executor, name)
+values ('7', 'Armin van Buuren');
+
+insert into executor (id_executor, name)
+values ('8', 'Tiesto');
+
+insert into genre (id_genre, name)
+values ('1', 'Pop');
+
+insert into genre (id_genre, name)
+values ('2', 'Rock');
+
+insert into genre (id_genre, name)
+values ('3', 'Hip-hop');
+
+insert into genre (id_genre, name)
+values ('4', 'Metall');
+
+insert into genre (id_genre, name)
+values ('5', 'Electro');
+
+insert into genre (id_genre, name)
+values ('6', 'Trance');
+
+insert into album (id_album, album_release_year, name)
+values ('1', '01.01.2014', 'Diamonds');
+
+insert into album (id_album, album_release_year, name)
+values ('2', '01.01.2003', 'Meteora');
+
+insert into album (id_album, album_release_year, name)
+values ('3', '01.01.2018', 'Anywhere');
+
+insert into album (id_album, album_release_year, name)
+values ('4', '01.01.2009', 'Relapse');
+
+insert into album (id_album, album_release_year, name)
+values ('5', '01.01.1996', 'Load');
+
+insert into album (id_album, album_release_year, name)
+values ('6', '01.01.2021', 'Reprise');
+
+insert into album (id_album, album_release_year, name)
+values ('7', '01.01.2019', 'Balance');
+
+insert into album (id_album, album_release_year, name)
+values ('8', '01.01.2018', 'BOOM');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('1', 'Umbrella', '251', '1'), ('2', 'Desperado', '186', '1');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('3', 'Numb', '187', '2'), ('4', 'In the End', '219', '2'), ('5', 'Faint', '163', '2');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('6', 'Ritual', '199', '3'), ('7', 'For You', '244', '3');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('8', 'Stan', '503', '4'), ('9', 'Not Afraid', '250', '4');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('10', 'Fuel', '267', '5');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('11', 'Flower', '206', '6'), ('12', 'Lift Me Up', '194', '6');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('13', 'Orbion', '192', '7');
+
+insert into track (id_track, name, track_duration, id_album)
+values ('14', 'Elements Of Life', '212', '8'), ('15', 'Just Be', '195', '8');
+
+insert into compilation (id_compilation, name, year_of_issue)
+values ('1', 'Top Music 2019', '01.01.2019');
+
+insert into compilation (id_compilation, name, year_of_issue)
+values ('2', 'A State Of Trance', '01.01.2021'),
+       ('3', 'Electro House', '01.01.2020'),
+       ('4', 'New Perfect Pop', '01.01.2018'),
+       ('5', 'Rock Today', '01.01.2019'),
+       ('6', 'Best New Songs', '01.01.2022'),
+       ('7', 'The Best From West', '01.01.2020'),
+       ('8', 'From The Botton Of My Heart', '01.01.2023');
+       
+insert into genre_executor (id_genre, id_executor)    
+values ('1', '1'), ('1', '3'), ('2', '2'), ('3', '4'), ('4', '5'), ('5', '6'),
+        ('5', '7'), ('5', '8'), ('6', '7'), ('6', '8'), ('1', '8');
+   
+insert into executor_album (id_executor, id_album)
+values ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'),
+        ('7', '7'), ('8', '8'), ('1', '3'), ('4', '2'), ('7', '8'), ('8', '7');
+       
+insert into track_compilation (id_track, id_compilation)
+values ('1', '1'), ('2', '4'), ('3', '5'), ('4', '5'), ('5', '7'), ('6', '6'),
+       ('7', '7'), ('8', '8'), ('9', '3'), ('10', '2'), ('11', '3'), ('12', '3'),
+       ('13', '2'), ('14', '2'), ('15', '2'), ('3', '8'), ('7', '8'), ('8', '7');
