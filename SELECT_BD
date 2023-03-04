@@ -1,0 +1,63 @@
+#1
+select g.name, count(id_executor) from genre_executor ge
+left join genre g on g.id_genre  = ge.id_genre
+group by g.name;
+
+#2
+select count(id_track) from track t
+join album a on t.id_album = a.id_album 
+where album_release_year >= '01.01.2019' and album_release_year <= '01.01.2021';
+
+#3
+select a.name, avg(t.track_duration) from track t
+left join album a on t.id_album = a.id_album 
+group by a.name;
+
+#4
+select distinct e.name, a.album_release_year from album a
+join executor_album ea on a.id_album = ea.id_album 
+join executor e on ea.id_album = e.id_executor 
+where a.album_release_year != '01.01.2020';
+
+#5
+select distinct c.name from compilation c 
+join track_compilation tc on tc.id_compilation = c.id_compilation 
+join track t on tc.id_track = t.id_track 
+join album a on t.id_album = a.id_album 
+join executor_album ea on ea.id_album = a.id_album 
+join executor e on ea.id_executor = e.id_executor 
+where e.name = 'Linkin Park'
+
+
+#6
+select a.name, count(g.name) from album a 
+join executor_album ea on a.id_album = ea.id_album 
+join executor e on ea.id_executor = e.id_executor 
+join genre_executor ge on e.id_executor = ge.id_executor 
+join genre g on g.id_genre = ge.id_genre 
+group by a.name
+having count(g.name) > 1; 
+
+#7
+select t.name from track t 
+left join track_compilation tc on t.id_track  = tc.id_track 
+where tc.id_compilation is null;
+
+#8
+select e.name, t.track_duration from track t 
+join album a on t.id_album = a.id_album 
+join executor_album ea on ea.id_album = a.id_album 
+join executor e on ea.id_executor = e.id_executor 
+where track_duration = (select min(track_duration) from track)
+
+#9
+select distinct a.name from album a 
+left join track t on t.id_album = a.id_album 
+where t.id_album in (select t.id_album from track t
+                     group by t.id_album 
+                     having count(t.id_album) = (select count(t.id_track) from track t
+                                                 group by t.id_album 
+                                                 order by count
+                                                 limit 1
+                                                 )
+                     );
